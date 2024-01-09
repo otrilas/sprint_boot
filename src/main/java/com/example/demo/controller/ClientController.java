@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.ClientModel;
 import com.example.demo.services.ClientServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,4 +28,15 @@ public class ClientController {
     public ClientModel saveClient(@RequestBody ClientModel clientModel){
         return clientServices.saveClient(clientModel);
     }
+
+    @PutMapping(path = "/actualizar" )
+    public ResponseEntity<Void> updateClient(@RequestBody ClientModel clientModel){
+        return clientServices.updateClient(clientModel);
+    }
+
+    @DeleteMapping(path = "/eliminar/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id){
+        return clientServices.deleteClient(id);
+    }
+
 }
